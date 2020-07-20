@@ -3,9 +3,14 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 export default {
-  input: 'lib/cloneDeep.js',
+  input: [
+    'lib/cloneDeep.js',
+    'lib/isArray.js'
+  ],
   output: {
-    file: 'dist/cloneDeep.js',
+    chunkFileNames: '[name]-[hash].[format].js',
+    dir: 'dist',
+    entryFileNames: '[name].js',
     format: 'cjs',
     sourcemap: true
   },
