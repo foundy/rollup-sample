@@ -1,12 +1,13 @@
 {
   "name": "@foundy/rollup-sample",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist && rollup --config && cp package.json dist",
-    "dist": "cd dist && npm publish --access public"
+    "build": "rm -rf dist && rollup --config",
+    "prepublishOnly": "npm run build && cp -r ./dist/* .",
+    "postpublish": "git clean -fd"
   },
   "repository": {
     "type": "git",
